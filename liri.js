@@ -2,7 +2,8 @@ require("dotenv").config();
 //fs.require("fs");
 var axios = require("axios");
 var keys = require("./key.js");
-var spotify = new spotify(keys.spotify);
+var spotify = require("node-spotify-api");
+var newSpotify = new spotify(keys.spotify);
 var command = process.argv[2];
 var query = process.argv[3];
 
@@ -33,10 +34,20 @@ switch (command) {
 }
 
 // API call for Spotify (spotify-this-song).
-function spotifyAPI () {
-    spotify.search
+function spotifyAPI() {
+    newSpotify.search({
+        type: 'track',
+        query: query,
+    }, function (err, data) {
+        console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+        console.log("Song Name: " + data.tracks.items[0].name);
+        console.log("Song Preview: " + data.tracks.items[0].external_urls.spotify);
+        console.log("Album: " + data.tracks.items[0].album.name);
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+    });
 };
-
 
 // API call for OMDB (movie-this).
 
