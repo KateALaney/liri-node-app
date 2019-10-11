@@ -2,6 +2,7 @@ require("dotenv").config();
 //fs.require("fs");
 var axios = require("axios");
 var keys = require("./key.js");
+var moment = require("moment");
 var spotify = require("node-spotify-api");
 var newSpotify = new spotify(keys.spotify);
 var command = process.argv[2];
@@ -12,6 +13,7 @@ console.log(query);
 
 switch (command) {
     case "concert-this":
+        bandsAPI();
         console.log("concert-this is being executed");
         break;
 
@@ -82,3 +84,28 @@ function omdbAPI() {
 };
 
 // API call for Bands in Town (concert-this).
+
+function bandsAPI() {
+    axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp").then(
+            function (response) {
+                // console.log(response.data);
+                console.log("The venue is: " + response.data[0].venue.name);
+                console.log("The location is: " + response.data[0].venue.city + ", " + response.data[0].venue.region + ".");
+                console.log("The date of the concert is: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
+            })
+        .catch(function (error) {
+            if (error.response) {
+                console.log("------Data------");
+                console.log(error.response.data);
+                console.log("------Status----");
+                console.log(error.response.status);
+                console.log("------Status----");
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request)
+            } else {
+                console.log("Error", error.message);
+            }
+            console.log(error.config);
+        });
+};
