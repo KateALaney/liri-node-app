@@ -1,5 +1,5 @@
 require("dotenv").config();
-//fs.require("fs");
+var fs = require("fs");
 var axios = require("axios");
 var keys = require("./key.js");
 var moment = require("moment");
@@ -8,8 +8,8 @@ var newSpotify = new spotify(keys.spotify);
 var command = process.argv[2];
 var query = process.argv[3];
 
-console.log(command);
-console.log(query);
+// console.log(command);
+// console.log(query);
 
 switch (command) {
     case "concert-this":
@@ -28,6 +28,7 @@ switch (command) {
         break;
 
     case "do-what-it-says":
+        readRandom();
         console.log("do-what-it-says is being executed");
         break;
 
@@ -108,4 +109,16 @@ function bandsAPI() {
             }
             console.log(error.config);
         });
+};
+
+// Read/write function for random.txt.
+
+function readRandom() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+          return console.log(error);
+        }
+        console.log(data);
+    
+      });
 };
