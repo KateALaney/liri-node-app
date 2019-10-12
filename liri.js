@@ -87,12 +87,15 @@ function omdbAPI() {
 // API call for Bands in Town (concert-this).
 
 function bandsAPI() {
-    axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp").then(
-            function (response) {
-                // console.log(response.data);
-                console.log("The venue is: " + response.data[0].venue.name);
-                console.log("The location is: " + response.data[0].venue.city + ", " + response.data[0].venue.region + ".");
-                console.log("The date of the concert is: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
+    axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp")
+        .then(function (response) {
+                var results = response.data;
+                for (var i = 0; i < results.length; i++) {
+                    console.log("The venue is: " + results[i].venue.name + ".");
+                    console.log("The location is: " + results[i].venue.city + ", " + results[i].venue.region + ", " + results[i].venue.country + ".");
+                    console.log("The date of the concert is: " + moment(results[i].datetime).format("MM/DD/YYYY"));
+                    console.log("------------");
+                };
             })
         .catch(function (error) {
             if (error.response) {
@@ -114,11 +117,11 @@ function bandsAPI() {
 // Read/write function for random.txt.
 
 function readRandom() {
-    fs.readFile("random.txt", "utf8", function(error, data) {
+    fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) {
-          return console.log(error);
+            return console.log(error);
         }
         console.log(data);
-    
-      });
+
+    });
 };
