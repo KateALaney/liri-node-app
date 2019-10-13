@@ -69,37 +69,38 @@ function bandsAPI() {
         });
 };
 
-// API call for Spotify (spotify-this-song).
+// Function to populated undefined user entry with data.
 function spotifyThis() {
     if (query === undefined) {
         query = "The Sign"
     };
-function spotifyAPI() {
-    newSpotify.search({
-        type: "track",
-        // Take in user query.
-        query: query,
-    }, function (err, data) {
-        // Print song data.
-        console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
-        console.log("Song Name: " + data.tracks.items[0].name);
-        console.log("Song Preview: " + data.tracks.items[0].external_urls.spotify);
-        console.log("Album: " + data.tracks.items[0].album.name);
-        // Create an error response.
-        if (err) {
-            return console.log("Error occurred: " + err);
-        }
-    });
-}
-spotifyAPI();
+    // API call for Spotify (spotify-this-song).
+    function spotifyAPI() {
+        newSpotify.search({
+            type: "track",
+            // Take in user query.
+            query: query,
+        }, function (err, data) {
+            // Print song data.
+            console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+            console.log("Song Name: " + data.tracks.items[0].name);
+            console.log("Song Preview: " + data.tracks.items[0].external_urls.spotify);
+            console.log("Album: " + data.tracks.items[0].album.name);
+            // Create an error response.
+            if (err) {
+                return console.log("Error occurred: " + err);
+            }
+        });
+    }
+    spotifyAPI();
 };
 
-// API call for OMDB (movie-this).
+// Function to populate undefined user entry with data.
 function movieThis() {
     if (query === undefined) {
         query = "Mr. Nobody"
-    }
-
+    };
+    // API call for OMDB (movie-this).
     function omdbAPI() {
         axios.get("https://www.omdbapi.com/?t=" + query + "&apikey=trilogy").then(
                 function (response) {
@@ -133,13 +134,17 @@ function movieThis() {
     omdbAPI();
 };
 
-// Read/write function for random.txt.
+// Read function for random.txt.
 function readRandom() {
     fs.readFile("random.txt", "utf8", function (error, data) {
+        // Create error message.
         if (error) {
             return console.log(error);
         }
-        console.log(data);
-
+    var dataArr = data.split(",");
+    command = dataArr[0];
+    query = dataArr[1];
+    spotifyThis();
     });
 };
+
