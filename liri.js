@@ -141,10 +141,25 @@ function readRandom() {
         if (error) {
             return console.log(error);
         }
-    var dataArr = data.split(",");
-    command = dataArr[0];
-    query = dataArr[1];
-    spotifyThis();
+        // Create array to store user input and split for easier handling.
+        var dataArr = data.split(",");
+        command = dataArr[0];
+        query = dataArr[1];
+        // Run function called by command and query.
+        spotifyThis();
     });
 };
 
+fs.writeFile("random.txt", "movies-this,Finding Dory", function(error, data) {
+
+  // If the code experiences any errors it will log the error to the console.
+  if (error) {
+    return console.log(error); 
+  }
+  var dataArr = data.split(",");
+  command = dataArr[0];
+  query = dataArr[1];
+});
+
+
+// writeRandom();
