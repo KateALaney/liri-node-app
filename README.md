@@ -1,3 +1,5 @@
+![NPM](https://img.shields.io/npm/l/MIT?color=yellow&style=plastic)
+
 # LIRI Node App
 LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command-line node app that takes in parameters and gives back data.  LIRI will search for concerts, movies, music, and run a random.txt file which generates calls for concerts, movies, and music.
 
@@ -15,6 +17,9 @@ LIRI is made to run four commands: `concert-this`, which will print all concert 
 
 5. Lastly, to run the details of the `random.txt` file, enter `node liri.js do-what-it says`.  This will run the already-existing command in the file, which is to provide the Spotify details for the song "I Want It That Way", by the Backstreet Boys.
 
+## Video Demonstration
+
 ## Deployed Version of App
 
 ## Technologies Used
+1. 
