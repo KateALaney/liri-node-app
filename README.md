@@ -21,7 +21,7 @@ LIRI is made to run four commands: `concert-this`, which will print all concert 
 
 ## Deployed Version of App
 
-https://katealaney.github.io/liri-node-app/
+<a href="https://katealaney.github.io/liri-node-app/">https://katealaney.github.io/liri-node-app/</a>
 
 ## Technologies Used
 1. JavaScript
