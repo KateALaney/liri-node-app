@@ -17,7 +17,7 @@ LIRI is made to run four commands: `concert-this`, which will print all concert 
 
 ## Video Demonstration
 
-<a href="liri-node-app.webm">Video Demonstration</a>
+<a href="video-demonstration.mp4">Video Demonstration</a>
 
 ## Deployed Version of App
 
