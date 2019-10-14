@@ -1,5 +1,3 @@
-![NPM](https://img.shields.io/npm/l/MIT?color=yellow&style=plastic)
-
 # LIRI Node App
 LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command-line node app that takes in parameters and gives back data.  LIRI will search for concerts, movies, music, and run a random.txt file which generates calls for concerts, movies, and music.
 
@@ -13,13 +11,18 @@ LIRI is made to run four commands: `concert-this`, which will print all concert 
 
 3. To get the details of a movie, including title, year released, IMDB rating, Rotten Tomatoes rating, country of production, language, plot, and principal actors, enter `node liri.js movie-this <movie name>` in the command line.  It is also possible to run the command without a movie specified - if this is done, then the results will populate with Keanu Reeve's "Mr. Nobody".  See video below for demonstration.
 
-4. To get the details of a song, including artist, title, album, and link to the song in Spotify, enter `node liri.js spotify-this-song <song name>` in the command line.  It is also possible to run the command without a song specified - if this is done, then the results will populate with Ace of Base's "The Sign".  See video below for demonstration.
+4. To get the details of a song, including artist, title, album, and link to the song in Spotify, enter `node liri.js spotify-this-song <song name>` in the command line.  It is also possible to run the command without a song specified - if this is done, then the results will populate with Harry Styles' "Sign of the Times".  See video below for demonstration.
 
 5. Lastly, to run the details of the `random.txt` file, enter `node liri.js do-what-it says`.  This will run the already-existing command in the file, which is to provide the Spotify details for the song "I Want It That Way", by the Backstreet Boys.
 
 ## Video Demonstration
 
+<a href="liri-node-app.webm">Video Demonstration</a>
+
 ## Deployed Version of App
 
+https://katealaney.github.io/liri-node-app/
+
 ## Technologies Used
-1. 
+1. JavaScript
+2. Node.js
